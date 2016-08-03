@@ -1,0 +1,51 @@
+ <div ng-controller="DealCtrl as dealVm" class="deal">
+  
+  
+  <status></status>
+ 
+  <div ng-if="dealVm.deal.fields.dealdate" class="container deal-date">
+    
+    <h1 class="pull-left">Deal vom: {{dealVm.deal.fields.dealdate | date:'dd.MM.yyyy'}}</h1><h1 class="pull-right"><span class="hidden-xs">Läuft noch </span><countdown date="dealVm.deal.fields.dealdate"></coundown></h2>
+  </div>
+
+  <!-- Articles listing -->
+  <div class="container">
+    <div class="row">
+        <div class="listing__horizontal">
+          <div style="width:{{dealVm.listing.widthpx}};">
+            <article class="listing-article" ng-repeat="article in dealVm.deal.fields.articles" ui-sref="deal.detail({deal: dealVm.deal.fields.fakedate, articleid: article.sys.id})" ng-class="dealVm.selectedArticleId == article.sys.id ? 'selected' : ''">
+              <img ng-src="{{ article.fields.imagesJson.Pics[1]  }}" width="100%">
+             <!-- <div class="listing-title" ng-bind-html="article.fields.title | titlesplit"></div>
+              <div class="price" >
+                  <span class="today">CHF {{ article.fields.price }}</span>
+                  <span class="old"><span class="val">CHF {{ article.fields.oldprice }}</span></span>
+              </div>-->
+            </article>
+          </div>
+            
+        </div>
+    </div>
+  </div>
+
+  <div class="container detail-container">
+    
+    <div ui-view="DealDetail"></div>
+      
+  </div>
+  
+ 
+  
+  <!--
+  <div class="container detail">
+     <div class="row">
+        <div class="col-lg-8">
+          <h1>{{dealVm.deal.fields.dealdate | date:'dd.MM.yyyy'}} - {{dealVm.deal.fields.title }}</h1>
+          <p ng-bind-html="dealVm.deal.fields.description | html"></p>
+        </div>
+        <img ng-click="dealVm.loadArticle('11Ho7CyvAw84QA6EYSkiKi')" src="{{dealVm.deal.fields.coverimg.fields.file.url}}" width="100%">
+      </div> 
+  </div>
+  -->
+  
+</div>  
+

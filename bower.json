@@ -1,0 +1,23 @@
+{
+  "name": "street-cf",
+  "description": "deploybot test project",
+  "main": "Gruntfile.js",
+  "authors": [
+    "Robert Denus"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/denu5/street-cf",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-contentful": "^2.0.0",
+    "angular": ">=1.2.0"
+  }
+}

@@ -1,0 +1,5 @@
+<div ng-controller="PageCtrl as pageVm" class="container static-page">
+    <h1>{{pageVm.page.fields.title}}</h1>
+    <div ng-bind-html="pageVm.page.fields.content | markdown"></div>
+</div>  
+

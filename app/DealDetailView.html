@@ -1,0 +1,62 @@
+<div ng-controller="DealDetailCtrl as detail">
+    <div class="row detail-inner" ng-if="detail.article.fields.title.length > 0 || detail.article.stockloader">
+      <div class="col-xs-12 col-lg-7 detail-left">
+        <div class="activepicture">
+          <img ng-srcset="{{detail.article.activePicture.zoomPic}} 2x" ng-src="{{detail.article.activePicture.regularPic}}" width="100%">
+          <div class="controls">
+              <span class="glyphicon glyphicon-triangle-left arrow-left" ng-click="detail.setPrevPicture()" alt="Prev"></span>
+              <span class="glyphicon glyphicon-triangle-right arrow-right" ng-click="detail.setNextPicture()" alt="Next"></span>
+          </div>
+         
+        </div>
+        <!-- 
+          <ul ng-repeat="image in detail.article.fields.images">
+            <li> <img src="{{image.fields.file.url}}" width="20"></li>
+          </ul>
+          -->
+          
+      </div>
+      
+      <div class="col-xs-12 col-lg-5 detail-right detail-article">
+          <div><a href="{{detail.article.fields.manufacturerUrl}}"><img ng-srcset="{{detail.article.fields.manufacturerIcon}} 2x" ng-src="{{detail.article.fields.manufacturerIcon}}"></a></div>
+          
+          <h1 ng-bind-html="detail.article.fields.title | titlesplit"></h1>
+          
+          <div class="price">
+             <div class="badge">{{detail.article.pricedrop}} Reduziert</div>
+            <p class="today"><span class="desc">Nur heute</span> <span class="val">CHF {{detail.article.fields.price }}.-</span> </p>
+            <p class="old"><span class="desc">statt</span> <span class="val">CHF {{detail.article.fields.oldprice }}.-</span> </p>
+          </div>
+         
+          <div class="tobasket-container stockloader" ng-class="detail.article.stockloader ? 'stock-loaded' : 'stock-unloaded'">
+            <form class="js-oxProductForm" ng-submit="detail.toCartSubmit($event)" id="toBasketForm" action="https://www.urbanpeople.com/widget.php?" method="post" ng-if="detail.article.stockloader">
+              <input type="hidden" name="lang" value="0">
+              <input type="hidden" name="cl" value="basket">
+              <input type="hidden" name="dealsource" value="true">
+              <input type="hidden" name="fnc" value="tobasket">
+              <input id="amountToBasket" type="hidden" name="am" value="1" size="3" >
+              <input type="hidden" name="aid" ng-value="detail.article.aid">
+              <div ng-if="detail.article.variants.length > 1 && detail.article.isbuyable">
+                <div class="choosesize">Wähle deine Grösse:</div>
+                <ul class="varboxes">
+                  <li ng-repeat="variant in detail.article.variants" ng-class="{'soldout': variant.stock < 1, 'selected': variant.selected}"><a ng-click="detail.setCartSelectVariant(variant)">{{variant.varselect}}</a></li>
+                </ul>
+              </div>
+              <button ng-if="detail.article.isbuyable" class="btn-tocart" type="submit"><span ng-if="cartselect">Groesse {{data.name}}</span>  In den Warenkorb</button>
+              <button ng-if="!detail.article.isbuyable" class="btn-soldout">Leider ausverkauft</button>
+            </form>
+          </div>
+          
+          <div class="delivery-info"><span class="glyphicon glyphicon-envelope"></span> {{dealVm.deal.fields.deliveryinfo}}</div>
+          <div class="article-desc">
+            <p ng-bind-html="detail.article.fields.description | html"></p>
+          </div>
+          
+          
+          
+      </div>
+      
+    </div>
+   
+</div>
+
