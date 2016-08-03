@@ -39,7 +39,8 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        // compile less stylesheets to css -----------------------------------------
+
+        // compile less stylesheets to css ---------------------------------------
         less: {
             options: {
                 banner: '/*\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n',
@@ -47,7 +48,7 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    'assets/css/style.min.css': 'assets/less/style.less'
+                    'assets/css/style.css': 'assets/less/style.less'
                 }
             }
         },
@@ -60,6 +61,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
 
     // Default task(s).
-    grunt.registerTask('default', ['htmlmin']);
+    grunt.registerTask('default', ['htmlmin','copy','less']);
 
 };
