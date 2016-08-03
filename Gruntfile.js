@@ -61,6 +61,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
 
     // Default task(s).
-    grunt.registerTask('default', ['htmlmin','copy','less']);
+    grunt.registerTask('default', ['copy','less']);
 
 };
