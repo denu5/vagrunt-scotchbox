@@ -57,11 +57,11 @@ module.exports = function(grunt) {
 
     // Load the plugin that provides the task.
     //grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    //grunt.loadNpmTasks('grunt-contrib-less');
 
     // Default task(s).
-    grunt.registerTask('default', ['copy:html']);
+    grunt.registerTask('default', ['less','copy']);
 
 
 };
