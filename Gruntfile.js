@@ -52,6 +52,9 @@ module.exports = function(grunt) {
                 }
             }
         },
+        clean: {
+            public: ['public']
+        }
 
     });
 
@@ -59,9 +62,10 @@ module.exports = function(grunt) {
     //grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     // Default task(s).
-    grunt.registerTask('default', ['less','copy']);
+    grunt.registerTask('default', ['less','clean:public','copy']);
 
 
 };
