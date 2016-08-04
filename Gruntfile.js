@@ -30,14 +30,15 @@ module.exports = function(grunt) {
                     expand: true           // required when using cwd
                 }]
             },
-            bower: {
-                files: [{
-                    cwd: 'bower',  // set working folder / root to copy
-                    src: '**/*',           // copy all files and subfolders
-                    dest: 'public/bower',    // destination folder
-                    expand: true           // required when using cwd
-                }]
-            }
+            //
+            //bower: {
+            //    files: [{
+            //        cwd: 'bower',  // set working folder / root to copy
+            //        src: '**/*',           // copy all files and subfolders
+            //        dest: 'public/bower',    // destination folder
+            //      expand: true           // required when using cwd
+            //    }]
+            //}
         },
 
         // compile less stylesheets to css ---------------------------------------
