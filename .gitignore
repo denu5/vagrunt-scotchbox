@@ -18,3 +18,4 @@ npm-debug.log
 # Bower components
 bower
 public_html
+public_dev/assets/css

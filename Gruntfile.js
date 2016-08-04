@@ -24,9 +24,9 @@ module.exports = function(grunt) {
         copy: {
             html: {
                 files: [{
-                    cwd: 'app',  // set working folder / root to copy
+                    cwd: 'public_dev',  // set working folder / root to copy
                     src: '**/*',           // copy all files and subfolders
-                    dest: 'public',    // destination folder
+                    dest: 'public_html',    // destination folder
                     expand: true           // required when using cwd
                 }]
             },
@@ -49,12 +49,12 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    'assets/css/style.css': 'assets/less/style.less'
+                    'public_dev/assets/css/style.css': 'public_dev/assets/less/style.less'
                 }
             }
         },
         clean: {
-            public: ['public']
+            public: ['public_html'] //remove folder because of "removed-files-issue"
         }
 
     });
