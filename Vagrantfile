@@ -11,4 +11,11 @@ Vagrant.configure("2") do |config|
     # Optional NFS. Make sure to remove other synced_folder line too
     #config.vm.synced_folder ".", "/var/www", :nfs => { :mount_options => ["dmode=777","fmode=666"] }
 
+    config.vm.provision "shell", inline: <<-SHELL
+        mv /var/www/public /var/www/public_html
+        sudo sed -i s,/var/www/public,/var/www/public_dev,g /etc/apache2/sites-available/000-default.conf
+        sudo sed -i s,/var/www/public,/var/www/public_dev,g /etc/apache2/sites-available/scotchbox.local.conf
+        sudo service apache2 restart
+    SHELL
+
 end
